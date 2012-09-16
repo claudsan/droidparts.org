@@ -1,0 +1,138 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Object-Relational Mapping &mdash; DroidParts</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.7.8',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="DroidParts" href="../index.html" />
+    <link rel="next" title="Logging" href="log.html" />
+    <link rel="prev" title="Models &amp; Entities" href="models.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="log.html" title="Logging"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="models.html" title="Models &amp; Entities"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">DroidParts</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="object-relational-mapping">
+<span id="orm"></span><h1>Object-Relational Mapping<a class="headerlink" href="#object-relational-mapping" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>DroidParts takes a traditional DAO approach of having <cite>Entities</cite> + <cite>EntityManagers</cite> (as opposed to <cite>ActiveRecord</cite>).</p>
+<p>A couple of things that need to be done in order for this to work:</p>
+<ol class="arabic simple">
+<li>Subclass <tt class="docutils literal"><span class="pre">AbstractDBOpenhelper</span></tt> &amp; override <tt class="docutils literal"><span class="pre">getEntityClasses()</span></tt> to return the actual Entities of your app.</li>
+<li>An <tt class="docutils literal"><span class="pre">AbstractDependencyProvider</span></tt> subclass that would return <tt class="docutils literal"><span class="pre">DBOpenHelper</span></tt> created at step 1.</li>
+</ol>
+</div>
+<div class="section" id="abstractdbopenhelper">
+<h2>AbstractDBOpenHelper<a class="headerlink" href="#abstractdbopenhelper" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">AbstractDBOpenHelper</span> <span class="pre">extends</span> <span class="pre">SQLiteOpenHelper</span></tt> &amp; provides utility methods.</p>
+</div>
+<div class="section" id="crud">
+<h2>CRUD<a class="headerlink" href="#crud" title="Permalink to this headline">¶</a></h2>
+<p>See <tt class="docutils literal"><span class="pre">EntityManager</span></tt> &amp; <tt class="docutils literal"><span class="pre">EntityCursorAdapter</span></tt>.</p>
+</div>
+<div class="section" id="advanced-querying">
+<h2>Advanced Querying<a class="headerlink" href="#advanced-querying" title="Permalink to this headline">¶</a></h2>
+<p>Check out <tt class="docutils literal"><span class="pre">EntityManager</span></tt>&#8216;s <tt class="docutils literal"><span class="pre">select()</span></tt>, <tt class="docutils literal"><span class="pre">update()</span></tt>, <tt class="docutils literal"><span class="pre">delete()</span></tt> builders.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Object-Relational Mapping</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#abstractdbopenhelper">AbstractDBOpenHelper</a></li>
+<li><a class="reference internal" href="#crud">CRUD</a></li>
+<li><a class="reference internal" href="#advanced-querying">Advanced Querying</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="models.html"
+                        title="previous chapter">Models &amp; Entities</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="log.html"
+                        title="next chapter">Logging</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="log.html" title="Logging"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="models.html" title="Models &amp; Entities"
+             >previous</a> |</li>
+        <li><a href="../index.html">DroidParts</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Alex Yanchenko.
+    </div>
+  </body>
+</html>

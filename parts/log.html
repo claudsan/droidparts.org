@@ -1,0 +1,151 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Logging &mdash; DroidParts</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.7.8',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="DroidParts" href="../index.html" />
+    <link rel="next" title="Adapters" href="adapters.html" />
+    <link rel="prev" title="Object-Relational Mapping" href="orm.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="adapters.html" title="Adapters"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="orm.html" title="Object-Relational Mapping"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">DroidParts</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="logging">
+<span id="log"></span><h1>Logging<a class="headerlink" href="#logging" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">L</span></tt> is used for logging without tags.</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">L</span><span class="o">.</span><span class="na">i</span><span class="o">(</span><span class="s">&quot;Important Message&quot;</span><span class="o">);</span>
+</pre></div>
+</div>
+<p>results in the following <tt class="docutils literal"><span class="pre">LogCat</span></tt> output in development mode:</p>
+<div class="highlight-python"><pre>EntityTestCase.testUniqueAndNull():50 Important Message</pre>
+</div>
+<p>In production mode (a signed .apk) the tag will be the package name.</p>
+</div>
+<div class="section" id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>In debug mode all output is logged.
+Loglevel for production is configured in <tt class="docutils literal"><span class="pre">AndroidManifest.xml</span></tt>:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;application</span> <span class="nt">&gt;</span>
+
+    <span class="nt">&lt;meta-data</span>
+        <span class="na">android:name=</span><span class="s">&quot;droidparts_log_level&quot;</span>
+        <span class="na">android:value=</span><span class="s">&quot;warn&quot;</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/application&gt;</span>
+</pre></div>
+</div>
+<p>Available loglevels:</p>
+<ul class="simple">
+<li><strong>disable</strong></li>
+<li><strong>verbose</strong></li>
+<li><strong>debug</strong></li>
+<li><strong>info</strong></li>
+<li><strong>warn</strong></li>
+<li><strong>error</strong></li>
+<li><strong>assert</strong></li>
+</ul>
+<p>By default all log output is stripped.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Logging</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="orm.html"
+                        title="previous chapter">Object-Relational Mapping</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="adapters.html"
+                        title="next chapter">Adapters</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="adapters.html" title="Adapters"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="orm.html" title="Object-Relational Mapping"
+             >previous</a> |</li>
+        <li><a href="../index.html">DroidParts</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Alex Yanchenko.
+    </div>
+  </body>
+</html>

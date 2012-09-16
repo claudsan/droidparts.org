@@ -1,0 +1,172 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Dependency Injection &mdash; DroidParts</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.7.8',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="DroidParts" href="../index.html" />
+    <link rel="next" title="Models &amp; Entities" href="models.html" />
+    <link rel="prev" title="Sample Apps" href="../intro/sample_apps.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="models.html" title="Models &amp; Entities"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../intro/sample_apps.html" title="Sample Apps"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">DroidParts</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="dependency-injection">
+<span id="di"></span><h1>Dependency Injection<a class="headerlink" href="#dependency-injection" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>Dependency injection is what saves you keystrokes.
+DroidParts is capable of injecting Views, resources, system services, etc. out-of-box.
+In order to inject custom dependencies you&#8217;ll need a <tt class="docutils literal"><span class="pre">DependencyProvider</span></tt>.
+Besides that, it&#8217;s required for ORM.</p>
+</div>
+<div class="section" id="dependencyprovider">
+<h2>DependencyProvider<a class="headerlink" href="#dependencyprovider" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Subclass <tt class="docutils literal"><span class="pre">AbstractDependencyProvider</span></tt>.</li>
+<li>Specify the newly created class in <tt class="docutils literal"><span class="pre">AndroidManifest.xml</span></tt>:</li>
+</ol>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;application</span> <span class="nt">&gt;</span>
+
+    <span class="nt">&lt;meta-data</span>
+        <span class="na">android:name=</span><span class="s">&quot;droidparts_dependency_provider&quot;</span>
+        <span class="na">android:value=</span><span class="s">&quot;.DependencyProvider&quot;</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/application&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="annotations">
+<h2>Annotations<a class="headerlink" href="#annotations" title="Permalink to this headline">¶</a></h2>
+<p><strong>droidparts-base</strong>:</p>
+<ul>
+<li><p class="first"><cite>&#64;InjectBundleExtra</cite> - in <tt class="docutils literal"><span class="pre">Activity</span></tt> = <tt class="docutils literal"><span class="pre">getIntent().getExtras().getXX()</span></tt></p>
+</li>
+<li><p class="first"><cite>&#64;InjectDependency</cite> - custom dependency from <tt class="docutils literal"><span class="pre">DependencyProvider</span></tt></p>
+</li>
+<li><p class="first"><cite>&#64;InjectResource</cite> - String, Drawable, String[] from res.</p>
+</li>
+<li><p class="first"><cite>&#64;InjectSystemService</cite> = <tt class="docutils literal"><span class="pre">getSystemSerice(Context.SERVICE_NAME)</span></tt></p>
+</li>
+<li><p class="first"><cite>&#64;InjectView</cite> =</p>
+<div class="highlight-python"><pre>@InjectView(R.id.view_btn)
+Button btnView;
+
+btnView = (Button)findViewById(R.id.view_btn)</pre>
+</div>
+</li>
+</ul>
+<p><strong>droidparts-modern</strong> adds the following capatibilities:</p>
+<ul class="simple">
+<li><cite>&#64;InjectBundleExtra</cite> - in <tt class="docutils literal"><span class="pre">Fragment</span></tt> = <tt class="docutils literal"><span class="pre">getArguments().getXX()</span></tt></li>
+<li><cite>&#64;InjectFragment</cite> - in <tt class="docutils literal"><span class="pre">FragmentActivity</span></tt>, inject <tt class="docutils literal"><span class="pre">Fragment</span></tt> listed in xml</li>
+<li><cite>&#64;InjectParentActivity</cite> - in <tt class="docutils literal"><span class="pre">Fragment</span></tt>, inject the <tt class="docutils literal"><span class="pre">Actvity</span></tt> it belongs to.</li>
+</ul>
+</div>
+<div class="section" id="injection">
+<h2>Injection<a class="headerlink" href="#injection" title="Permalink to this headline">¶</a></h2>
+<p>Injection happens automatically in classes that extend Activities/Services/Fragments that come with DroidParts.</p>
+<p>To inject manually, call <tt class="docutils literal"><span class="pre">Injector.get().inject(...)</span></tt>.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Dependency Injection</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#dependencyprovider">DependencyProvider</a></li>
+<li><a class="reference internal" href="#annotations">Annotations</a></li>
+<li><a class="reference internal" href="#injection">Injection</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../intro/sample_apps.html"
+                        title="previous chapter">Sample Apps</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="models.html"
+                        title="next chapter">Models &amp; Entities</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="models.html" title="Models &amp; Entities"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../intro/sample_apps.html" title="Sample Apps"
+             >previous</a> |</li>
+        <li><a href="../index.html">DroidParts</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Alex Yanchenko.
+    </div>
+  </body>
+</html>

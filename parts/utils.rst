@@ -1,8 +1,0 @@
-.. _utils:
-
-=====
-Utils
-=====
-
-ImageAttacher
--------------

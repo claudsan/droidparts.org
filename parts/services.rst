@@ -1,8 +1,0 @@
-.. _services:
-
-========
-Services
-========
-
-SimpleIntentService
--------------------
