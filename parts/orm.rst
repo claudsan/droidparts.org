@@ -25,3 +25,17 @@ See ``EntityManager`` & ``EntityCursorAdapter``.
 Advanced Querying
 -----------------
 Check out ``EntityManager``'s ``select()``, ``update()``, ``delete()`` builders.
+
+Many-to-many
+------------
+A junction table is required for m2m:
+
+.. code-block:: java
+
+    @Table(name="track_to_tag")
+    public class TrackToTag extends Entity {
+        @Column(nullable = false)
+        public Track track;
+        @Column(nullable = false)
+        public Tag tag;
+    }
