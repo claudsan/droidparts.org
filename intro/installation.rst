@@ -3,7 +3,6 @@
 ============
 Installation
 ============
-
 #. Clone DroidParts & ActionBarSherlock.
 #. Add them as library projects to your app.
 

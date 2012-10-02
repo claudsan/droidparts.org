@@ -53,8 +53,8 @@ Parts
    
 Contributing & Getting Help
 ---------------------------
-http://github.com/yanchenko/droidparts
-http://stackoverflow.com/tags/droidparts
+* **GitHub**: http://github.com/yanchenko/droidparts
+* **StackOverflow**: http://stackoverflow.com/tags/droidparts
    
 Misc
 ----
