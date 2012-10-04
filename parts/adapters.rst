@@ -3,12 +3,10 @@
 ========
 Adapters
 ========
+DroidParts includes injection-enabled extensions to ``ArrayAdapter`` & ``CursorAdapter`` as well as a more interesting ``EntityCursorAdapter``.
 
-Entity Adapters
----------------
-
-Array Adapters
---------------
+EntityCursorAdapter
+-------------------
 
 Tags
 ----

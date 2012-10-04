@@ -17,7 +17,7 @@ results in the following ``LogCat`` output in development mode::
      EntityTestCase.testUniqueAndNull():50 Important Message
 
 
-In production mode (a signed .apk) the tag will be the package name.
+In production build (a signed .apk) the tag will change to the package name.
 
 Configuration
 -------------

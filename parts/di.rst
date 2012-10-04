@@ -6,15 +6,26 @@ Dependency Injection
 
 Overview
 --------
-Dependency injection is what saves you keystrokes.
-DroidParts is capable of injecting Views, resources, system services, etc. out-of-box.
-In order to inject custom dependencies you'll need a ``DependencyProvider``.
-Besides that, it's required for ORM.
+| DroidParts is capable of injecting Views, resources, system services, etc. out-of-box.
+| Custom dependencies are defined in a ``DependencyProvider`` class which is also required for ORM.
 
 DependencyProvider
 ------------------
-#. Subclass ``AbstractDependencyProvider``.
-#. Specify the newly created class in ``AndroidManifest.xml``:
+DependencyProvider is a subclass of ``AbstractDependencyProvider`` with methods that return injected objects.
+
+The supported method signatures are:
+
+.. code-block:: java
+
+    public CustomObject getCustomObject();
+    // and
+    public CustomObject getCustomObject(Context ctx);
+
+in the latter case ``Context`` will be the actual one that that requested injection (e.g. an ``Acitvity`` or a ``Fragment``).
+
+There's one special method to be implemented: ``public abstract AbstractDBOpenHelper getDBOpenHelper();``.
+    
+The newly created class must be specified in ``AndroidManifest.xml``:
 
 .. code-block:: xml
 
@@ -30,10 +41,10 @@ Annotations
 -----------
 **droidparts-base**:
 
-* `@InjectBundleExtra` - in ``Activity`` = ``getIntent().getExtras().getXX()``
-* `@InjectDependency` - custom dependency from ``DependencyProvider``
-* `@InjectResource` - String, Drawable, String[] from res.
-* `@InjectSystemService` = ``getSystemSerice(Context.SERVICE_NAME)``
+* `@InjectBundleExtra` - in ``Activity`` = ``getIntent().getExtras().getXX()``.
+* `@InjectDependency` - custom dependency from ``DependencyProvider``.
+* `@InjectResource` - String, String[], Drawable from res.
+* `@InjectSystemService` = ``getSystemSerice(Context.SERVICE_NAME)``.
 * `@InjectView` = ::
 
     @InjectView(R.id.view_btn)
@@ -43,13 +54,13 @@ Annotations
 
 **droidparts-modern** adds the following capatibilities:
 
-* `@InjectBundleExtra` - in ``Fragment`` = ``getArguments().getXX()``
-* `@InjectFragment` - in ``FragmentActivity``, inject ``Fragment`` listed in xml
+* `@InjectBundleExtra` - in ``Fragment`` = ``getArguments().getXX()``.
+* `@InjectFragment` - in ``FragmentActivity``, inject ``Fragment`` listed in xml.
 * `@InjectParentActivity` - in ``Fragment``, inject the ``Actvity`` it belongs to.
 
 Injection
 ---------
-Injection happens automatically in classes that extend Activities/Services/Fragments that come with DroidParts.
+Injection happens automatically in classes that extend Activities/Services/Fragments supplied with DroidParts.
 
 To inject manually, call ``Injector.get().inject(...)``. 
 

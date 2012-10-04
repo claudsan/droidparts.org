@@ -16,4 +16,3 @@ Nameless app
 **<sample/legacy>**
 
 An older fragments-free sample app.
-

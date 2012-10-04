@@ -10,4 +10,3 @@ AndroidManifest.xml Options
 ---------------------------
 :doc:`Dependency Injection </parts/di>` & :doc:`Logging </parts/log>` have options configurable via `AndroidManifest.xml`.
 The first one must be configured.
-

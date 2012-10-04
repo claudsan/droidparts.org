@@ -11,7 +11,7 @@ Models & Entities
 Annotaions
 ----------
 
-* Model: ``@Object``, ``@Key``
+* Model: ``@Key``
 * Entity: ``@Table``, ``@Column``
 
 Best Practices

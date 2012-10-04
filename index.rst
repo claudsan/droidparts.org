@@ -7,7 +7,7 @@ DroidParts
    
    .. image:: _static/images/droidparts_logo.*
 
-.. rubric:: Android framework that saves time.
+.. rubric:: Android framework that saves keystrokes.
 
 .. admonition:: Note
 
