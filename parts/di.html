@@ -55,17 +55,23 @@
 <span id="di"></span><h1>Dependency Injection<a class="headerlink" href="#dependency-injection" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>Dependency injection is what saves you keystrokes.
-DroidParts is capable of injecting Views, resources, system services, etc. out-of-box.
-In order to inject custom dependencies you&#8217;ll need a <tt class="docutils literal"><span class="pre">DependencyProvider</span></tt>.
-Besides that, it&#8217;s required for ORM.</p>
+<div class="line-block">
+<div class="line">DroidParts is capable of injecting Views, resources, system services, etc. out-of-box.</div>
+<div class="line">Custom dependencies are defined in a <tt class="docutils literal"><span class="pre">DependencyProvider</span></tt> class which is also required for ORM.</div>
+</div>
 </div>
 <div class="section" id="dependencyprovider">
 <h2>DependencyProvider<a class="headerlink" href="#dependencyprovider" title="Permalink to this headline">¶</a></h2>
-<ol class="arabic simple">
-<li>Subclass <tt class="docutils literal"><span class="pre">AbstractDependencyProvider</span></tt>.</li>
-<li>Specify the newly created class in <tt class="docutils literal"><span class="pre">AndroidManifest.xml</span></tt>:</li>
-</ol>
+<p>DependencyProvider is a subclass of <tt class="docutils literal"><span class="pre">AbstractDependencyProvider</span></tt> with methods that return injected objects.</p>
+<p>The supported method signatures are:</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="kd">public</span> <span class="n">CustomObject</span> <span class="nf">getCustomObject</span><span class="o">();</span>
+<span class="c1">// and</span>
+<span class="kd">public</span> <span class="n">CustomObject</span> <span class="nf">getCustomObject</span><span class="o">(</span><span class="n">Context</span> <span class="n">ctx</span><span class="o">);</span>
+</pre></div>
+</div>
+<p>in the latter case <tt class="docutils literal"><span class="pre">Context</span></tt> will be the actual one that that requested injection (e.g. an <tt class="docutils literal"><span class="pre">Acitvity</span></tt> or a <tt class="docutils literal"><span class="pre">Fragment</span></tt>).</p>
+<p>There&#8217;s one special method to be implemented: <tt class="docutils literal"><span class="pre">public</span> <span class="pre">abstract</span> <span class="pre">AbstractDBOpenHelper</span> <span class="pre">getDBOpenHelper();</span></tt>.</p>
+<p>The newly created class must be specified in <tt class="docutils literal"><span class="pre">AndroidManifest.xml</span></tt>:</p>
 <div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;application</span> <span class="nt">&gt;</span>
 
     <span class="nt">&lt;meta-data</span>
@@ -80,13 +86,13 @@ Besides that, it&#8217;s required for ORM.</p>
 <h2>Annotations<a class="headerlink" href="#annotations" title="Permalink to this headline">¶</a></h2>
 <p><strong>droidparts-base</strong>:</p>
 <ul>
-<li><p class="first"><cite>&#64;InjectBundleExtra</cite> - in <tt class="docutils literal"><span class="pre">Activity</span></tt> = <tt class="docutils literal"><span class="pre">getIntent().getExtras().getXX()</span></tt></p>
+<li><p class="first"><cite>&#64;InjectBundleExtra</cite> - in <tt class="docutils literal"><span class="pre">Activity</span></tt> = <tt class="docutils literal"><span class="pre">getIntent().getExtras().getXX()</span></tt>.</p>
 </li>
-<li><p class="first"><cite>&#64;InjectDependency</cite> - custom dependency from <tt class="docutils literal"><span class="pre">DependencyProvider</span></tt></p>
+<li><p class="first"><cite>&#64;InjectDependency</cite> - custom dependency from <tt class="docutils literal"><span class="pre">DependencyProvider</span></tt>.</p>
 </li>
-<li><p class="first"><cite>&#64;InjectResource</cite> - String, Drawable, String[] from res.</p>
+<li><p class="first"><cite>&#64;InjectResource</cite> - String, String[], Drawable from res.</p>
 </li>
-<li><p class="first"><cite>&#64;InjectSystemService</cite> = <tt class="docutils literal"><span class="pre">getSystemSerice(Context.SERVICE_NAME)</span></tt></p>
+<li><p class="first"><cite>&#64;InjectSystemService</cite> = <tt class="docutils literal"><span class="pre">getSystemSerice(Context.SERVICE_NAME)</span></tt>.</p>
 </li>
 <li><p class="first"><cite>&#64;InjectView</cite> =</p>
 <div class="highlight-python"><pre>@InjectView(R.id.view_btn)
@@ -98,14 +104,14 @@ btnView = (Button)findViewById(R.id.view_btn)</pre>
 </ul>
 <p><strong>droidparts-modern</strong> adds the following capatibilities:</p>
 <ul class="simple">
-<li><cite>&#64;InjectBundleExtra</cite> - in <tt class="docutils literal"><span class="pre">Fragment</span></tt> = <tt class="docutils literal"><span class="pre">getArguments().getXX()</span></tt></li>
-<li><cite>&#64;InjectFragment</cite> - in <tt class="docutils literal"><span class="pre">FragmentActivity</span></tt>, inject <tt class="docutils literal"><span class="pre">Fragment</span></tt> listed in xml</li>
+<li><cite>&#64;InjectBundleExtra</cite> - in <tt class="docutils literal"><span class="pre">Fragment</span></tt> = <tt class="docutils literal"><span class="pre">getArguments().getXX()</span></tt>.</li>
+<li><cite>&#64;InjectFragment</cite> - in <tt class="docutils literal"><span class="pre">FragmentActivity</span></tt>, inject <tt class="docutils literal"><span class="pre">Fragment</span></tt> listed in xml.</li>
 <li><cite>&#64;InjectParentActivity</cite> - in <tt class="docutils literal"><span class="pre">Fragment</span></tt>, inject the <tt class="docutils literal"><span class="pre">Actvity</span></tt> it belongs to.</li>
 </ul>
 </div>
 <div class="section" id="injection">
 <h2>Injection<a class="headerlink" href="#injection" title="Permalink to this headline">¶</a></h2>
-<p>Injection happens automatically in classes that extend Activities/Services/Fragments that come with DroidParts.</p>
+<p>Injection happens automatically in classes that extend Activities/Services/Fragments supplied with DroidParts.</p>
 <p>To inject manually, call <tt class="docutils literal"><span class="pre">Injector.get().inject(...)</span></tt>.</p>
 </div>
 </div>
