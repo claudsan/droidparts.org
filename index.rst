@@ -23,7 +23,7 @@ DroidParts
 * *RESTClient* for GETting, PUTting, POSTing, DELETing & InputStream-getting, also speaks JSON.
 * *ImageAttacher* to asynchronously attach images to ImageViews, cross fade support.
 * Numerous *Utils*.
-* Support for *Fragments* in cooperation with `ActionBarSherlock <https://github.com/JakeWharton/ActionBarSherlock>`_.
+* Support for *Fragments*, both native and `ActionBarSherlock <https://github.com/JakeWharton/ActionBarSherlock>`_-based.
 
 Getting Started
 ---------------
@@ -51,8 +51,8 @@ Parts
    parts/utils
    parts/fragments
    
-Contributing & Getting Help
----------------------------
+Code & Stuff
+------------
 * **GitHub**: http://github.com/yanchenko/droidparts
 * **StackOverflow**: http://stackoverflow.com/tags/droidparts
    

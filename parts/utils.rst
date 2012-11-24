@@ -6,7 +6,7 @@ Utils
 
 ImageAttacher
 -------------
-Example layout for ``attachImageCrossFaded(View placeholderView, ImageView imageView, String imgUrl)``:
+Sample layout for ``attachImageCrossFaded(View placeholderView, ImageView imageView, String imgUrl)``:
 
 .. code-block:: xml
 
