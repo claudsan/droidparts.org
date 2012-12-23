@@ -12,10 +12,8 @@ After cloning https://github.com/yanchenko/droidparts you'll see the following t
 
 #. *base* - Core stuff including dependency injection, object-relational mapping & AsyncTasks.
 #. *extra* - RESTClient, ImageAttacher & minor parts that don't belong to *base*.
-#. *legacy* - Classes that are outdated since Fragments appeared.
-#. *modern-native* & *modern-sherlock* - Fragments support either native (Android 3.0+) or based on ActionBarSherlock.
+#. *fragments* - Fragments support for 3 implementations: native (Android 3.0+), Android Support Package or ActionBarSherlock.
 #. *sample* - A couple of sample apps.
 #. *test* - Unit tests.
 
-| The first 4 are Android library projects.
-| A typical app would have *base*, *extra* & *modern-native* parts as dependencies.
+| The first 3 are Android library projects a typical app would reference.

@@ -52,7 +52,7 @@ Annotations
 
     btnView = (Button)findViewById(R.id.view_btn)
 
-**droidparts-modern** adds the following capatibilities:
+**droidparts-fragments** adds the following capatibilities:
 
 * `@InjectBundleExtra` - in ``Fragment`` = ``getArguments().getXX()``.
 * `@InjectFragment` - in ``FragmentActivity``, inject ``Fragment`` listed in xml.
