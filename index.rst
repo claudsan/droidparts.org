@@ -22,8 +22,8 @@ DroidParts
 * Better *logger* (log any object without a tag).
 * *RESTClient* for GETting, PUTting, POSTing, DELETing & InputStream-getting,
   also speaks JSON.
-* *ImageAttacher* to asynchronously attach images to ImageViews, cross fade
-  support.
+* *ImageFetcher* to asynchronously attach images to ImageViews, with caching,
+  cross-fade & transformation support.
 * Numerous *Utils*.
 * Support for *Fragments*, both native and
   `ActionBarSherlock <https://github.com/JakeWharton/ActionBarSherlock>`_-based.
