@@ -4,28 +4,14 @@
 Utils
 =====
 
-ImageAttacher
--------------
-Sample layout for ``attachImageCrossFaded(View placeholderView, ImageView imageView, String imgUrl)``:
+ImageFetcher
+------------
+A helper for downloading Images and setting them to ImageView.
 
-.. code-block:: xml
+Features:
 
-   <?xml version="1.0" encoding="utf-8"?>
-   <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-       android:layout_width="match_parent"
-       android:layout_height="match_parent" >
-       
-       <ImageView
-           android:id="@+id/view_placeholder"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_gravity="center"
-           android:src="@drawable/placeholder_image" />
-   
-       <ImageView
-           android:id="@+id/view_image"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_gravity="center" />
-   
-   </FrameLayout>
+* cross-fade support
+
+* optional image processing (like scaling)
+
+* both disk & in-memory caching

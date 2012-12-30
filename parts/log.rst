@@ -21,8 +21,8 @@ In production build (a signed .apk) the tag will change to the package name.
 
 Configuration
 -------------
-In debug mode all output is logged.
-Loglevel for production is configured in ``AndroidManifest.xml``:
+In debug mode all output is logged. Loglevel for production is configured in
+``AndroidManifest.xml``:
 
 .. code-block:: xml
 

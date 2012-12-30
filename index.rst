@@ -20,18 +20,21 @@ DroidParts
 * *JSON* (de)serialization.
 * Improved *AsyncTasks* with Exceptions, progress & result reporting.
 * Better *logger* (log any object without a tag).
-* *RESTClient* for GETting, PUTting, POSTing, DELETing & InputStream-getting, also speaks JSON.
-* *ImageAttacher* to asynchronously attach images to ImageViews, cross fade support.
+* *RESTClient* for GETting, PUTting, POSTing, DELETing & InputStream-getting,
+  also speaks JSON.
+* *ImageAttacher* to asynchronously attach images to ImageViews, cross fade
+  support.
 * Numerous *Utils*.
-* Support for *Fragments*, both native and `ActionBarSherlock <https://github.com/JakeWharton/ActionBarSherlock>`_-based.
+* Support for *Fragments*, both native and
+  `ActionBarSherlock <https://github.com/JakeWharton/ActionBarSherlock>`_-based.
 
 Getting Started
 ---------------
 .. toctree::
    :maxdepth: 1
 
-   intro/overview
-   intro/installation
+   intro/introduction
+   intro/getting_started
    intro/sample_apps
   
 Parts
@@ -55,7 +58,7 @@ Code & Stuff
 ------------
 * **GitHub**: http://github.com/yanchenko/droidparts
 * **StackOverflow**: http://stackoverflow.com/tags/droidparts
-   
+
 Misc
 ----
 * :ref:`genindex`

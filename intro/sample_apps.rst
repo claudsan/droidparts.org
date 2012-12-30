@@ -9,7 +9,8 @@ DroidPartsGram
 --------------
 **<sample/DroidPartsGram>**
 
-*DroidPartGram* is an app that utilizes Instagram's API and most of the parts of DroidParts.
+*DroidPartGram* is an app that utilizes Instagram's API and most of the parts of
+DroidParts.
 
 Nameless App
 ------------
