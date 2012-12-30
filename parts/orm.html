@@ -55,11 +55,14 @@
 <span id="orm"></span><h1>Object-Relational Mapping<a class="headerlink" href="#object-relational-mapping" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>DroidParts takes a traditional DAO approach of having <cite>Entities</cite> + <cite>EntityManagers</cite> (as opposed to <cite>ActiveRecord</cite>).</p>
+<p>DroidParts takes a traditional DAO approach of having <cite>Entities</cite> +
+<cite>EntityManagers</cite> (as opposed to <cite>ActiveRecord</cite>).</p>
 <p>A couple of things that need to be done in order for this to work:</p>
 <ol class="arabic simple">
-<li>Subclass <tt class="docutils literal"><span class="pre">AbstractDBOpenhelper</span></tt> &amp; override <tt class="docutils literal"><span class="pre">getEntityClasses()</span></tt> to return the actual Entities of your app.</li>
-<li>An <tt class="docutils literal"><span class="pre">AbstractDependencyProvider</span></tt> subclass that would return <tt class="docutils literal"><span class="pre">DBOpenHelper</span></tt> created at step 1.</li>
+<li>Subclass <tt class="docutils literal"><span class="pre">AbstractDBOpenhelper</span></tt> &amp; override <tt class="docutils literal"><span class="pre">getEntityClasses()</span></tt> to
+return the actual Entities of your app.</li>
+<li>An <tt class="docutils literal"><span class="pre">AbstractDependencyProvider</span></tt> subclass that would return
+<tt class="docutils literal"><span class="pre">DBOpenHelper</span></tt> created at step 1.</li>
 </ol>
 </div>
 <div class="section" id="abstractdbopenhelper">

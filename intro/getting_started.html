@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Logging &mdash; DroidParts</title>
+    <title>Getting Started &mdash; DroidParts</title>
     
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -26,8 +26,8 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="DroidParts" href="../index.html" />
-    <link rel="next" title="Adapters" href="adapters.html" />
-    <link rel="prev" title="Object-Relational Mapping" href="orm.html" /> 
+    <link rel="next" title="Sample Apps" href="sample_apps.html" />
+    <link rel="prev" title="Introduction" href="introduction.html" /> 
   </head>
   <body>
     <div class="related">
@@ -37,10 +37,10 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="adapters.html" title="Adapters"
+          <a href="sample_apps.html" title="Sample Apps"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="orm.html" title="Object-Relational Mapping"
+          <a href="introduction.html" title="Introduction"
              accesskey="P">previous</a> |</li>
         <li><a href="../index.html">DroidParts</a> &raquo;</li> 
       </ul>
@@ -51,43 +51,18 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="logging">
-<span id="log"></span><h1>Logging<a class="headerlink" href="#logging" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">L</span></tt> is used for logging without tags.</p>
-<div class="highlight-java"><div class="highlight"><pre><span class="n">L</span><span class="o">.</span><span class="na">i</span><span class="o">(</span><span class="s">&quot;Important Message&quot;</span><span class="o">);</span>
-</pre></div>
-</div>
-<p>results in the following <tt class="docutils literal"><span class="pre">LogCat</span></tt> output in development mode:</p>
-<div class="highlight-python"><pre>EntityTestCase.testUniqueAndNull():50 Important Message</pre>
-</div>
-<p>In production build (a signed .apk) the tag will change to the package name.</p>
-</div>
-<div class="section" id="configuration">
-<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
-<p>In debug mode all output is logged. Loglevel for production is configured in
-<tt class="docutils literal"><span class="pre">AndroidManifest.xml</span></tt>:</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;application</span> <span class="nt">&gt;</span>
-
-    <span class="nt">&lt;meta-data</span>
-        <span class="na">android:name=</span><span class="s">&quot;droidparts_log_level&quot;</span>
-        <span class="na">android:value=</span><span class="s">&quot;warn&quot;</span> <span class="nt">/&gt;</span>
-
-<span class="nt">&lt;/application&gt;</span>
-</pre></div>
-</div>
-<p>Available loglevels:</p>
-<ul class="simple">
-<li><strong>disable</strong></li>
-<li><strong>verbose</strong></li>
-<li><strong>debug</strong></li>
-<li><strong>info</strong></li>
-<li><strong>warn</strong></li>
-<li><strong>error</strong></li>
-<li><strong>assert</strong></li>
-</ul>
-<p>By default all log output is stripped.</p>
+  <div class="section" id="getting-started">
+<span id="id1"></span><h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<ol class="arabic simple">
+<li>Clone <a class="reference external" href="https://github.com/yanchenko/droidparts.git">https://github.com/yanchenko/droidparts.git</a>.</li>
+<li>Import projects.</li>
+<li>Add them as library projects to your app.</li>
+</ol>
+<div class="section" id="androidmanifest-xml-options">
+<h2>AndroidManifest.xml Options<a class="headerlink" href="#androidmanifest-xml-options" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../parts/di.html"><em>Dependency Injection</em></a> &amp; <a class="reference internal" href="../parts/log.html"><em>Logging</em></a> have
+options configurable via <cite>AndroidManifest.xml</cite>. The first one must be
+configured.</p>
 </div>
 </div>
 
@@ -99,19 +74,18 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Logging</a><ul>
-<li><a class="reference internal" href="#overview">Overview</a></li>
-<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#">Getting Started</a><ul>
+<li><a class="reference internal" href="#androidmanifest-xml-options">AndroidManifest.xml Options</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="orm.html"
-                        title="previous chapter">Object-Relational Mapping</a></p>
+  <p class="topless"><a href="introduction.html"
+                        title="previous chapter">Introduction</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="adapters.html"
-                        title="next chapter">Adapters</a></p>
+  <p class="topless"><a href="sample_apps.html"
+                        title="next chapter">Sample Apps</a></p>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
@@ -136,10 +110,10 @@
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="adapters.html" title="Adapters"
+          <a href="sample_apps.html" title="Sample Apps"
              >next</a> |</li>
         <li class="right" >
-          <a href="orm.html" title="Object-Relational Mapping"
+          <a href="introduction.html" title="Introduction"
              >previous</a> |</li>
         <li><a href="../index.html">DroidParts</a> &raquo;</li> 
       </ul>

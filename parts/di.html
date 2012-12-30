@@ -55,22 +55,24 @@
 <span id="di"></span><h1>Dependency Injection<a class="headerlink" href="#dependency-injection" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<div class="line-block">
-<div class="line">DroidParts is capable of injecting Views, resources, system services, etc. out-of-box.</div>
-<div class="line">Custom dependencies are defined in a <tt class="docutils literal"><span class="pre">DependencyProvider</span></tt> class which is also required for ORM.</div>
-</div>
+<p>DroidParts is capable of injecting Views, resources, system services, etc.
+out-of-box. Custom dependencies are defined in a <tt class="docutils literal"><span class="pre">DependencyProvider</span></tt> class
+which is also required for ORM.</p>
 </div>
 <div class="section" id="dependencyprovider">
 <h2>DependencyProvider<a class="headerlink" href="#dependencyprovider" title="Permalink to this headline">¶</a></h2>
-<p>DependencyProvider is a subclass of <tt class="docutils literal"><span class="pre">AbstractDependencyProvider</span></tt> with methods that return injected objects.</p>
+<p>DependencyProvider is a subclass of <tt class="docutils literal"><span class="pre">AbstractDependencyProvider</span></tt> with methods
+that return injected objects.</p>
 <p>The supported method signatures are:</p>
 <div class="highlight-java"><div class="highlight"><pre><span class="kd">public</span> <span class="n">CustomObject</span> <span class="nf">getCustomObject</span><span class="o">();</span>
 <span class="c1">// and</span>
 <span class="kd">public</span> <span class="n">CustomObject</span> <span class="nf">getCustomObject</span><span class="o">(</span><span class="n">Context</span> <span class="n">ctx</span><span class="o">);</span>
 </pre></div>
 </div>
-<p>in the latter case <tt class="docutils literal"><span class="pre">Context</span></tt> will be the actual one that that requested injection (e.g. an <tt class="docutils literal"><span class="pre">Acitvity</span></tt> or a <tt class="docutils literal"><span class="pre">Fragment</span></tt>).</p>
-<p>There&#8217;s one special method to be implemented: <tt class="docutils literal"><span class="pre">public</span> <span class="pre">abstract</span> <span class="pre">AbstractDBOpenHelper</span> <span class="pre">getDBOpenHelper();</span></tt>.</p>
+<p>in the latter case <tt class="docutils literal"><span class="pre">Context</span></tt> will be the actual one that that requested
+injection (e.g. an <tt class="docutils literal"><span class="pre">Acitvity</span></tt> or a <tt class="docutils literal"><span class="pre">Fragment</span></tt>).</p>
+<p>There&#8217;s one special method to be implemented:
+<tt class="docutils literal"><span class="pre">public</span> <span class="pre">abstract</span> <span class="pre">AbstractDBOpenHelper</span> <span class="pre">getDBOpenHelper();</span></tt>.</p>
 <p>The newly created class must be specified in <tt class="docutils literal"><span class="pre">AndroidManifest.xml</span></tt>:</p>
 <div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;application</span> <span class="nt">&gt;</span>
 
@@ -94,7 +96,7 @@
 </li>
 <li><p class="first"><cite>&#64;InjectSystemService</cite> = <tt class="docutils literal"><span class="pre">getSystemSerice(Context.SERVICE_NAME)</span></tt>.</p>
 </li>
-<li><p class="first"><cite>&#64;InjectView</cite> =</p>
+<li><p class="first"><cite>&#64;InjectView</cite> =:</p>
 <div class="highlight-python"><pre>@InjectView(R.id.view_btn)
 Button btnView;
 
@@ -105,13 +107,16 @@ btnView = (Button)findViewById(R.id.view_btn)</pre>
 <p><strong>droidparts-fragments</strong> adds the following capatibilities:</p>
 <ul class="simple">
 <li><cite>&#64;InjectBundleExtra</cite> - in <tt class="docutils literal"><span class="pre">Fragment</span></tt> = <tt class="docutils literal"><span class="pre">getArguments().getXX()</span></tt>.</li>
-<li><cite>&#64;InjectFragment</cite> - in <tt class="docutils literal"><span class="pre">FragmentActivity</span></tt>, inject <tt class="docutils literal"><span class="pre">Fragment</span></tt> listed in xml.</li>
-<li><cite>&#64;InjectParentActivity</cite> - in <tt class="docutils literal"><span class="pre">Fragment</span></tt>, inject the <tt class="docutils literal"><span class="pre">Actvity</span></tt> it belongs to.</li>
+<li><cite>&#64;InjectFragment</cite> - in <tt class="docutils literal"><span class="pre">FragmentActivity</span></tt>, inject <tt class="docutils literal"><span class="pre">Fragment</span></tt> listed in
+xml.</li>
+<li><cite>&#64;InjectParentActivity</cite> - in <tt class="docutils literal"><span class="pre">Fragment</span></tt>, inject the <tt class="docutils literal"><span class="pre">Actvity</span></tt> it belongs
+to.</li>
 </ul>
 </div>
 <div class="section" id="injection">
 <h2>Injection<a class="headerlink" href="#injection" title="Permalink to this headline">¶</a></h2>
-<p>Injection happens automatically in classes that extend Activities/Services/Fragments supplied with DroidParts.</p>
+<p>Injection happens automatically in classes that extend
+Activities/Services/Fragments supplied with DroidParts.</p>
 <p>To inject manually, call <tt class="docutils literal"><span class="pre">Injector.get().inject(...)</span></tt>.</p>
 </div>
 </div>

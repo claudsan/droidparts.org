@@ -53,30 +53,15 @@
             
   <div class="section" id="utils">
 <span id="id1"></span><h1>Utils<a class="headerlink" href="#utils" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="imageattacher">
-<h2>ImageAttacher<a class="headerlink" href="#imageattacher" title="Permalink to this headline">¶</a></h2>
-<p>Sample layout for <tt class="docutils literal"><span class="pre">attachImageCrossFaded(View</span> <span class="pre">placeholderView,</span> <span class="pre">ImageView</span> <span class="pre">imageView,</span> <span class="pre">String</span> <span class="pre">imgUrl)</span></tt>:</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
-<span class="nt">&lt;FrameLayout</span> <span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span>
-    <span class="na">android:layout_width=</span><span class="s">&quot;match_parent&quot;</span>
-    <span class="na">android:layout_height=</span><span class="s">&quot;match_parent&quot;</span> <span class="nt">&gt;</span>
-
-    <span class="nt">&lt;ImageView</span>
-        <span class="na">android:id=</span><span class="s">&quot;@+id/view_placeholder&quot;</span>
-        <span class="na">android:layout_width=</span><span class="s">&quot;wrap_content&quot;</span>
-        <span class="na">android:layout_height=</span><span class="s">&quot;wrap_content&quot;</span>
-        <span class="na">android:layout_gravity=</span><span class="s">&quot;center&quot;</span>
-        <span class="na">android:src=</span><span class="s">&quot;@drawable/placeholder_image&quot;</span> <span class="nt">/&gt;</span>
-
-    <span class="nt">&lt;ImageView</span>
-        <span class="na">android:id=</span><span class="s">&quot;@+id/view_image&quot;</span>
-        <span class="na">android:layout_width=</span><span class="s">&quot;wrap_content&quot;</span>
-        <span class="na">android:layout_height=</span><span class="s">&quot;wrap_content&quot;</span>
-        <span class="na">android:layout_gravity=</span><span class="s">&quot;center&quot;</span> <span class="nt">/&gt;</span>
-
-<span class="nt">&lt;/FrameLayout&gt;</span>
-</pre></div>
-</div>
+<div class="section" id="imagefetcher">
+<h2>ImageFetcher<a class="headerlink" href="#imagefetcher" title="Permalink to this headline">¶</a></h2>
+<p>A helper for downloading Images and setting them to ImageView.</p>
+<p>Features:</p>
+<ul class="simple">
+<li>cross-fade support</li>
+<li>optional image processing (like scaling)</li>
+<li>both disk &amp; in-memory caching</li>
+</ul>
 </div>
 </div>
 
@@ -89,7 +74,7 @@
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Utils</a><ul>
-<li><a class="reference internal" href="#imageattacher">ImageAttacher</a></li>
+<li><a class="reference internal" href="#imagefetcher">ImageFetcher</a></li>
 </ul>
 </li>
 </ul>
