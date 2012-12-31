@@ -14,13 +14,13 @@ Modules
 -------
 DroidParts is split into several modules that reside in the following folders:
 
-#. *base* - Core stuff including dependency injection, object-relational
-   mapping & AsyncTasks.
-#. *extra* - RESTClient, ImageAttacher & minor parts that don't belong to
+#. **base** - core stuff including dependency injection, object-relational
+   mapping, JSON serialization & AsyncTasks.
+#. **extra** - RESTClient, ImageFetcher & helpers that don't belong to the
    *base*.
-#. *fragments* - Fragments support for 3 implementations: native (Android
-   3.0+), Android Support Package or ActionBarSherlock.
-#. *sample* - A couple of sample apps.
-#. *test* - Unit tests.
+#. **fragments** - Fragments support with 3 implementations: native (Android
+   3.0+), Android Support Package & ActionBarSherlock.
+#. **sample** - a couple of sample apps that show DroidParts in action.
+#. **test** - unit tests.
 
-The first 3 are Android library projects a typical app would reference.
+The first 3 projects are Android libraries a typical app would use.
