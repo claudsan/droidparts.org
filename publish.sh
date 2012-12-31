@@ -20,7 +20,7 @@ git clean -f -d
 git checkout gh-pages
 git pull
 #
-rm -rf !(.git|.nojekyll|CNAME)
+rm -rf !(.git|.gitignore|.nojekyll|CNAME)
 #
 cp -r "$CURR_DIR"/_build/html/* .
 rm -rf _sources objects.inv
