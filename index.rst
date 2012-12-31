@@ -7,12 +7,6 @@ DroidParts
    
    .. image:: _static/images/droidparts_logo.*
 
-.. rubric:: Android framework that saves keystrokes.
-
-.. admonition:: Note
-
-    Documentation and the author's English are work in progress.
-
 **DroidParts** is a carefully crafted Android framework that includes:
 
 * *DI* - dependency injection for Views, resources, etc.
@@ -25,8 +19,12 @@ DroidParts
 * *ImageFetcher* to asynchronously attach images to ImageViews, with caching,
   cross-fade & transformation support.
 * Numerous *Utils*.
-* Support for *Fragments*, both native and
-  `ActionBarSherlock <https://github.com/JakeWharton/ActionBarSherlock>`_-based.
+* Support for *Fragments*: native, support-v4 and
+  `ActionBarSherlock <https://github.com/JakeWharton/ActionBarSherlock>`_-backed.
+
+.. admonition:: Note
+
+    Documentation and the author's English are work in progress.
 
 Getting Started
 ---------------
