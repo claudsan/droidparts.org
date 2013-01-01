@@ -35,22 +35,41 @@ First Steps
    first_steps/introduction
    first_steps/getting_started
   
-Parts
------
+Dependency Injection
+--------------------
 .. toctree::
    :maxdepth: 1
    
    parts/di
+   
+Persistence
+-----------
+.. toctree::
+   :maxdepth: 1
+
    parts/models
    parts/orm
-   parts/log
    parts/adapters
-   parts/async_tasks
    parts/json
+   
+Fragments
+---------
+.. toctree::
+   :maxdepth: 1
+   
+   parts/fragments
+   
+Other Parts
+-----------
+.. toctree::
+   :maxdepth: 1
+
+   parts/log
    parts/rest
+   parts/image_fetcher
+   parts/async_tasks
    parts/services
    parts/utils
-   parts/fragments
    
 Code & Stuff
 ------------
