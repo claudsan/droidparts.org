@@ -3,7 +3,8 @@
 ==========
 DroidParts
 ==========
-.. sidebar:: logo
+
+.. sidebar:: (:
    
    .. image:: _static/images/droidparts_logo.*
 
@@ -24,16 +25,15 @@ DroidParts
 
 .. admonition:: Note
 
-    Documentation and the author's English are work in progress.
+    Documentation and author's English are work in progress.
 
-Getting Started
----------------
+First Steps
+-----------
 .. toctree::
    :maxdepth: 1
 
-   intro/introduction
-   intro/getting_started
-   intro/sample_apps
+   first_steps/introduction
+   first_steps/getting_started
   
 Parts
 -----

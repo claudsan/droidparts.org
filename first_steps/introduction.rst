@@ -3,6 +3,7 @@
 ============
 Introduction
 ============
+
 Android is a joyful platform to develop for. Still, some repetitive tasks like
 SQLite interactions or performing POJO <=> JSON conversions or
 ``findingViewsById`` each time casting them to actual ``View`` subclasses are
@@ -12,6 +13,7 @@ domain name and no way back.
 
 Modules
 -------
+
 DroidParts is split into several modules that reside in the following folders:
 
 #. **base** - core stuff including dependency injection, object-relational
@@ -23,4 +25,4 @@ DroidParts is split into several modules that reside in the following folders:
 #. **sample** - a couple of sample apps that show DroidParts in action.
 #. **test** - unit tests.
 
-The first 3 projects are Android libraries a typical app would use.
+The first 3 are Android library projects and you'll probably use all of them.
