@@ -53,11 +53,34 @@
             
   <div class="section" id="fragments">
 <span id="id1"></span><h1>Fragments<a class="headerlink" href="#fragments" title="Permalink to this headline">¶</a></h1>
+<p>Fragments support is a bit tricky as they come in 3 incarnations
+with different base classes:</p>
+<ol class="arabic simple">
+<li>Android Support Package aka <tt class="docutils literal"><span class="pre">android-support-v4.jar</span></tt> [<tt class="docutils literal"><span class="pre">support</span></tt>]</li>
+<li>ActionBarSherlock [<tt class="docutils literal"><span class="pre">sherlock</span></tt>]</li>
+<li>Stock implementation on Android 3.0+ [<tt class="docutils literal"><span class="pre">stock</span></tt>]</li>
+</ol>
+<p>You have to be careful to extend appropriate Activities &amp; Fragments from <strong>droidparts-fragments</strong>.
+They have same names but different package names, last segments of which are specified
+in the brackets above.</p>
+<div class="section" id="fragmentactivity">
+<h2>FragmentActivity<a class="headerlink" href="#fragmentactivity" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">setActionBarReloadMenuItem(MenuItem</span> <span class="pre">menuItem)</span></tt> &amp; <tt class="docutils literal"><span class="pre">setActionBarLoadingIndicatorVisible(boolean</span> <span class="pre">visible)</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">setFragmentVisible(boolean</span> <span class="pre">visible,</span> <span class="pre">Fragment...</span> <span class="pre">fragments)</span></tt></p>
+</div>
 <div class="section" id="singlefragmentactivity">
 <h2>SingleFragmentActivity<a class="headerlink" href="#singlefragmentactivity" title="Permalink to this headline">¶</a></h2>
+<p>Base class for Activities with only one Fragment.</p>
 </div>
 <div class="section" id="tabbedfragmentactivity">
 <h2>TabbedFragmentActivity<a class="headerlink" href="#tabbedfragmentactivity" title="Permalink to this headline">¶</a></h2>
+<p>ActionBar-based tabs navigation with custom animation support.</p>
+</div>
+<div class="section" id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h2>
+<p>By default, <strong>droidparts-fragments</strong> depends on ActionBarSherlock at compile time.
+When building an app that requires min API 11+, you can remove this dependency and
+link stub classes from <tt class="docutils literal"><span class="pre">src-stub</span></tt> instead.</p>
 </div>
 </div>
 
@@ -70,8 +93,10 @@
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Fragments</a><ul>
+<li><a class="reference internal" href="#fragmentactivity">FragmentActivity</a></li>
 <li><a class="reference internal" href="#singlefragmentactivity">SingleFragmentActivity</a></li>
 <li><a class="reference internal" href="#tabbedfragmentactivity">TabbedFragmentActivity</a></li>
+<li><a class="reference internal" href="#notes">Notes</a></li>
 </ul>
 </li>
 </ul>
