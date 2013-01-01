@@ -26,3 +26,13 @@ DroidParts is split into several modules that reside in the following folders:
 #. **test** - unit tests.
 
 The first 3 are Android library projects and you'll probably use all of them.
+
+Sample Apps
+-----------
+
+Given the current state of this guide, learning by example makes a lot of sense.
+
+``<sample/DroidPartsGram>`` - an app that utilizes Instagram's API and most of the parts of
+DroidParts.
+
+``<sample/droidparts-sample>`` - an older fragments-free sample app.
