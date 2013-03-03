@@ -72,6 +72,121 @@ cross-fade &amp; transformation support.</li>
 <p class="first admonition-title">Note</p>
 <p class="last">Documentation and author&#8217;s English are work in progress.</p>
 </div>
+<div class="section" id="how-cool-is-droidparts">
+<h2>How cool is DroidParts?<a class="headerlink" href="#how-cool-is-droidparts" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="overview-in-code">
+<h3>Overview in Code<a class="headerlink" href="#overview-in-code" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Displays a list of Postings from <tt class="docutils literal"><span class="pre">EntityCursorAdapter</span></tt> which is backed by ORM. And yes, unlike other ORM solutions, it effectively uses native Cursor.</li>
+<li>Injects a <tt class="docutils literal"><span class="pre">Button</span></tt> and sets <tt class="docutils literal"><span class="pre">OnClickListener</span></tt>.</li>
+<li>Fetches, caches &amp; attaches pics in a single line of code.</li>
+<li>Serializes Postings to JSON &amp; POSTs the resulting <tt class="docutils literal"><span class="pre">JSONArray</span></tt> over http.</li>
+</ol>
+<div class="highlight-java"><div class="highlight"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">PostingListFragment</span> <span class="kd">extends</span> <span class="n">ListFragment</span> <span class="kd">implements</span>
+      <span class="n">View</span><span class="o">.</span><span class="na">OnClickListener</span><span class="o">,</span> <span class="n">AlterableContent</span><span class="o">&lt;</span><span class="n">Select</span><span class="o">&lt;</span><span class="n">Posting</span><span class="o">&gt;&gt;,</span>
+      <span class="n">AsyncTaskResultListener</span><span class="o">&lt;</span><span class="n">HTTPResponse</span><span class="o">&gt;</span> <span class="o">{</span>
+
+   <span class="kd">private</span> <span class="n">EntityCursorAdapter</span><span class="o">&lt;</span><span class="n">Posting</span><span class="o">&gt;</span> <span class="n">adapter</span><span class="o">;</span>
+
+   <span class="nd">@InjectDependency</span>
+   <span class="kd">private</span> <span class="n">DialogFactory</span> <span class="n">dialogFactory</span><span class="o">;</span>
+
+   <span class="nd">@InjectView</span><span class="o">(</span><span class="n">id</span> <span class="o">=</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">btn_submit</span><span class="o">,</span> <span class="n">click</span> <span class="o">=</span> <span class="kc">true</span><span class="o">)</span>
+   <span class="kd">private</span> <span class="n">Button</span> <span class="n">submitBtn</span><span class="o">;</span>
+
+   <span class="kd">private</span> <span class="n">Select</span><span class="o">&lt;</span><span class="n">Posting</span><span class="o">&gt;</span> <span class="n">select</span><span class="o">;</span>
+
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onActivityCreated</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+      <span class="kd">super</span><span class="o">.</span><span class="na">onActivityCreated</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+      <span class="n">adapter</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PostingCursorAdapter</span><span class="o">(</span><span class="n">getActivity</span><span class="o">());</span>
+      <span class="n">setListAdapter</span><span class="o">(</span><span class="n">adapter</span><span class="o">);</span>
+   <span class="o">}</span>
+
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">if</span> <span class="o">(</span><span class="n">v</span> <span class="o">==</span> <span class="n">submitBtn</span><span class="o">)</span> <span class="o">{</span>
+         <span class="n">submitPostings</span><span class="o">();</span>
+      <span class="o">}</span>
+   <span class="o">}</span>
+
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setContent</span><span class="o">(</span><span class="n">Select</span><span class="o">&lt;</span><span class="n">Posting</span><span class="o">&gt;</span> <span class="n">select</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">select</span> <span class="o">=</span> <span class="n">select</span><span class="o">;</span>
+      <span class="n">adapter</span><span class="o">.</span><span class="na">changeData</span><span class="o">(</span><span class="n">select</span><span class="o">);</span>
+   <span class="o">}</span>
+
+   <span class="kd">private</span> <span class="kt">void</span> <span class="nf">submitPostings</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">new</span> <span class="nf">SubmitPostingsTask</span><span class="o">(</span><span class="n">getActivity</span><span class="o">(),</span> <span class="k">this</span><span class="o">,</span> <span class="n">select</span><span class="o">).</span><span class="na">execute</span><span class="o">();</span>
+   <span class="o">}</span>
+
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onAsyncTaskSuccess</span><span class="o">(</span><span class="n">HTTPResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">dialogFactory</span><span class="o">.</span><span class="na">showToast</span><span class="o">(</span><span class="s">&quot;Response: &quot;</span> <span class="o">+</span> <span class="n">resp</span><span class="o">.</span><span class="na">body</span><span class="o">);</span>
+   <span class="o">}</span>
+
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onAsyncTaskFailure</span><span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">L</span><span class="o">.</span><span class="na">w</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+      <span class="n">dialogFactory</span><span class="o">.</span><span class="na">showErrorToast</span><span class="o">();</span>
+   <span class="o">}</span>
+
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PostingCursorAdapter</span> <span class="kd">extends</span> <span class="n">EntityCursorAdapter</span><span class="o">&lt;</span><span class="n">Posting</span><span class="o">&gt;</span> <span class="o">{</span>
+
+   <span class="kd">public</span> <span class="nf">PostingCursorAdapter</span><span class="o">(</span><span class="n">Context</span> <span class="n">ctx</span><span class="o">)</span> <span class="o">{</span>
+      <span class="kd">super</span><span class="o">(</span><span class="n">ctx</span><span class="o">,</span> <span class="n">Posting</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+   <span class="o">}</span>
+
+   <span class="nd">@InjectDependency</span>
+   <span class="kd">private</span> <span class="n">ImageFetcher</span> <span class="n">imageFetcher</span><span class="o">;</span>
+
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">bindView</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">,</span> <span class="n">View</span> <span class="n">view</span><span class="o">,</span> <span class="n">Posting</span> <span class="n">item</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">PostingTag</span> <span class="n">tag</span> <span class="o">=</span> <span class="o">(</span><span class="n">PostingTag</span><span class="o">)</span> <span class="n">view</span><span class="o">.</span><span class="na">getTag</span><span class="o">();</span>
+      <span class="n">tag</span><span class="o">.</span><span class="na">titleView</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="na">title</span><span class="o">);</span>
+      <span class="n">imageFetcher</span><span class="o">.</span><span class="na">attachImage</span><span class="o">(</span><span class="n">tag</span><span class="o">.</span><span class="na">iconView</span><span class="o">,</span> <span class="n">item</span><span class="o">.</span><span class="na">iconUrl</span><span class="o">);</span>
+   <span class="o">}</span>
+
+   <span class="c1">// ...</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SubmitPostingsTask</span> <span class="kd">extends</span> <span class="n">SimpleAsyncTask</span><span class="o">&lt;</span><span class="n">HTTPResponse</span><span class="o">&gt;</span> <span class="o">{</span>
+
+   <span class="nd">@InjectDependency</span>
+   <span class="kd">private</span> <span class="n">RESTClient2</span> <span class="n">restClient</span><span class="o">;</span>
+
+   <span class="kd">private</span> <span class="kd">final</span> <span class="n">EntityManager</span><span class="o">&lt;</span><span class="n">Posting</span><span class="o">&gt;</span> <span class="n">entityManager</span><span class="o">;</span>
+   <span class="kd">private</span> <span class="kd">final</span> <span class="n">JSONSerializer</span><span class="o">&lt;</span><span class="n">Posting</span><span class="o">&gt;</span> <span class="n">jsonSerializer</span><span class="o">;</span>
+
+   <span class="kd">private</span> <span class="kd">final</span> <span class="n">Select</span><span class="o">&lt;</span><span class="n">Posting</span><span class="o">&gt;</span> <span class="n">select</span><span class="o">;</span>
+
+   <span class="kd">public</span> <span class="nf">SubmitPostingsTask</span><span class="o">(</span><span class="n">Context</span> <span class="n">ctx</span><span class="o">,</span>
+         <span class="n">AsyncTaskResultListener</span><span class="o">&lt;</span><span class="n">HTTPResponse</span><span class="o">&gt;</span> <span class="n">resultListener</span><span class="o">,</span>
+         <span class="n">Select</span><span class="o">&lt;</span><span class="n">Posting</span><span class="o">&gt;</span> <span class="n">select</span><span class="o">)</span> <span class="o">{</span>
+      <span class="kd">super</span><span class="o">(</span><span class="n">ctx</span><span class="o">,</span> <span class="n">resultListener</span><span class="o">);</span>
+      <span class="n">entityManager</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EntityManager</span><span class="o">&lt;</span><span class="n">Posting</span><span class="o">&gt;(</span><span class="n">ctx</span><span class="o">,</span> <span class="n">Posting</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+      <span class="n">jsonSerializer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JSONSerializer</span><span class="o">&lt;</span><span class="n">Posting</span><span class="o">&gt;(</span><span class="n">ctx</span><span class="o">,</span> <span class="n">Posting</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">select</span> <span class="o">=</span> <span class="n">select</span><span class="o">;</span>
+   <span class="o">}</span>
+
+   <span class="nd">@Override</span>
+   <span class="kd">protected</span> <span class="n">HTTPResponse</span> <span class="nf">executeInBackground</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+      <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Posting</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="n">entityManager</span><span class="o">.</span><span class="na">readAll</span><span class="o">(</span><span class="n">select</span><span class="o">);</span>
+      <span class="n">JSONArray</span> <span class="n">arr</span> <span class="o">=</span> <span class="n">jsonSerializer</span><span class="o">.</span><span class="na">serialize</span><span class="o">(</span><span class="n">list</span><span class="o">);</span>
+      <span class="k">return</span> <span class="n">restClient</span><span class="o">.</span><span class="na">post</span><span class="o">(</span><span class="s">&quot;http://example.com&quot;</span><span class="o">,</span> <span class="n">arr</span><span class="o">);</span>
+   <span class="o">}</span>
+
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tl-dr">
+<h3>TL;DR<a class="headerlink" href="#tl-dr" title="Permalink to this headline">¶</a></h3>
+<p>DroidParts is awesome.</p>
+</div>
+</div>
 <div class="section" id="first-steps">
 <h2>First Steps<a class="headerlink" href="#first-steps" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
@@ -146,6 +261,11 @@ cross-fade &amp; transformation support.</li>
   <h3><a href="#">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">DroidParts</a><ul>
+<li><a class="reference internal" href="#how-cool-is-droidparts">How cool is DroidParts?</a><ul>
+<li><a class="reference internal" href="#overview-in-code">Overview in Code</a></li>
+<li><a class="reference internal" href="#tl-dr">TL;DR</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#first-steps">First Steps</a><ul>
 </ul>
 </li>

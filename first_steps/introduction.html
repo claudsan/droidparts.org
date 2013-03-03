@@ -59,20 +59,14 @@ SQLite interactions or performing POJO &lt;=&gt; JSON conversions or
 not much fun. Eventually you end up with a number of helper classes that are
 copied from project to project. That&#8217;s how DroidParts started. Then there was a
 domain name and no way back.</p>
-<div class="section" id="modules">
-<h2>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h2>
-<p>DroidParts is split into several modules that reside in the following folders:</p>
+<div class="section" id="structure">
+<h2>Structure<a class="headerlink" href="#structure" title="Permalink to this headline">¶</a></h2>
+<p>DroidParts repository contains the following folders:</p>
 <ol class="arabic simple">
-<li><strong>base</strong> - core stuff including dependency injection, object-relational
-mapping, JSON serialization &amp; AsyncTasks.</li>
-<li><strong>extra</strong> - RESTClient, ImageFetcher &amp; helpers that don&#8217;t belong to the
-<em>base</em>.</li>
-<li><strong>fragments</strong> - Fragments support with 3 implementations: native (Android
-3.0+), Android Support Package &amp; ActionBarSherlock.</li>
-<li><strong>sample</strong> - a couple of sample apps that show DroidParts in action.</li>
-<li><strong>test</strong> - unit tests.</li>
+<li><strong>droidparts</strong> - the library itself.</li>
+<li><strong>droidparts-samples</strong> - a couple of sample apps that show DroidParts in action.</li>
+<li><strong>droidparts-test</strong> - unit tests.</li>
 </ol>
-<p>The first 3 are Android library projects and you&#8217;ll probably use all of them.</p>
 </div>
 <div class="section" id="sample-apps">
 <h2>Sample Apps<a class="headerlink" href="#sample-apps" title="Permalink to this headline">¶</a></h2>
@@ -92,7 +86,7 @@ DroidParts.</p>
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Introduction</a><ul>
-<li><a class="reference internal" href="#modules">Modules</a></li>
+<li><a class="reference internal" href="#structure">Structure</a></li>
 <li><a class="reference internal" href="#sample-apps">Sample Apps</a></li>
 </ul>
 </li>

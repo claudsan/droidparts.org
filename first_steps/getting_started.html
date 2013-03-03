@@ -53,10 +53,17 @@
             
   <div class="section" id="getting-started">
 <span id="id1"></span><h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
-<p>Adding DroidParts to your own app is easy.
-First, clone the sources from <tt class="docutils literal"><span class="pre">https://github.com/yanchenko/droidparts.git</span></tt>.
-The suggested branch is <tt class="docutils literal"><span class="pre">master</span></tt> as it contains the latest release.
-After cloning, import the existing Eclipse projects.</p>
+<p>Adding DroidParts to your own app is easy.</p>
+<ol class="arabic simple">
+<li>Clone the sources from <tt class="docutils literal"><span class="pre">https://github.com/yanchenko/droidparts.git</span></tt>. The suggested branch is <tt class="docutils literal"><span class="pre">master</span></tt> as it contains the latest release.</li>
+<li>Import the existing Eclipse projects.</li>
+<li>ActionBarSherlock is required at compile time. To avoid this, use droidparts.jar. (TODO)</li>
+<li>Add dependencies to your project.</li>
+<li>Configure <tt class="docutils literal"><span class="pre">AdnroidManifest.xml</span></tt></li>
+<li>Subclass Application.</li>
+<li>Subclass AbstractDependencyProvider.</li>
+<li>Proguard</li>
+</ol>
 <div class="section" id="androidmanifest-xml-options">
 <h2>AndroidManifest.xml Options<a class="headerlink" href="#androidmanifest-xml-options" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference internal" href="../parts/di.html"><em>Dependency Injection</em></a> &amp; <a class="reference internal" href="../parts/log.html"><em>Logging</em></a> have
