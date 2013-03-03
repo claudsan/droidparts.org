@@ -35,6 +35,4 @@ ActionBar-based tabs navigation with custom animation support.
 Notes
 -----
 
-By default, **droidparts-fragments** depends on ActionBarSherlock at compile time.
-When building an app that requires min API 11+, you can remove this dependency and
-link stub classes from ``src-stub`` instead.
+By default, **droidparts** depends on ActionBarSherlock at compile time.

@@ -5,9 +5,15 @@ Getting Started
 ===============
 
 Adding DroidParts to your own app is easy.
-First, clone the sources from ``https://github.com/yanchenko/droidparts.git``.
-The suggested branch is ``master`` as it contains the latest release.
-After cloning, import the existing Eclipse projects.
+
+#. Clone the sources from ``https://github.com/yanchenko/droidparts.git``. The suggested branch is ``master`` as it contains the latest release.
+#. Import the existing Eclipse projects.
+#. ActionBarSherlock is required at compile time. To avoid this, use droidparts.jar. (TODO)
+#. Add dependencies to your project.
+#. Configure ``AdnroidManifest.xml``
+#. Subclass Application.
+#. Subclass AbstractDependencyProvider.
+#. Proguard
 
 AndroidManifest.xml Options
 ---------------------------
